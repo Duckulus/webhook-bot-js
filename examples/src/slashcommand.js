@@ -5,14 +5,12 @@ import {
   CommandResponse,
 } from 'webhook-bot-js';
 
-//create server by providing information about your application
 const server = new WebhookServer({
-  application_id: 'APPLICATION_ID',
-  token: 'BOT_TOKEN',
-  public_key: 'APPLICATION_PUBLIC_KEY',
+  application_id: '',
+  token: '',
+  public_key: '',
 });
 
-//register a slash command
 server.registerSlashCommand({
   name: 'hello',
   description: 'Greet someone',
@@ -35,8 +33,6 @@ server.registerSlashCommand({
   },
 });
 
-//register commands against discords api
-server.pushGlobalApplicationCommands();
+await server.pushGlobalApplicationCommands();
 
-//start server
 server.start();
