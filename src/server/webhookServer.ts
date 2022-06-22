@@ -1,5 +1,7 @@
 import express, { Express } from 'express';
 import { auth } from '../auth/authMiddleware';
+import { APIInteraction } from 'discord-api-types/v10';
+import { handleInteraction } from '../core/handler';
 
 export class WebhookServer {
   private app: Express;
@@ -19,6 +21,11 @@ export class WebhookServer {
   start() {
     this.app.use(express.json());
     this.app.use(auth(this.public_key));
+
+    this.app.post('/', async (req, res) => {
+      const interaction = req.body as APIInteraction;
+      res.status(200).send(await handleInteraction(interaction));
+    });
 
     this.app.listen(this.port, () => {
       console.log(`Server listening on ${this.port}`);
