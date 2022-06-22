@@ -6,6 +6,6 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "webhook-bot-js": "../"
+    "webhook-bot-js": "./.."
   }
 }
