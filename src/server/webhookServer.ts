@@ -14,6 +14,7 @@ import {
   UserCommand,
 } from '../core/commandTypes';
 import { REST } from '@discordjs/rest';
+import { logger } from '../utils/logger';
 
 export class WebhookServer {
   private app: Express;
@@ -75,10 +76,10 @@ export class WebhookServer {
       await this.rest.put(Routes['applicationCommands'](this.application_id), {
         body: commands,
       });
-      console.log(`Succesfully overwrote application commands globally`);
+      logger.info(`Succesfully overwrote application commands globally`);
     } catch (e) {
-      console.log(`Error registering application commands globally`);
-      console.log(e);
+      logger.error(`Error registering application commands globally`);
+      logger.error(e);
     }
   }
 
@@ -95,10 +96,10 @@ export class WebhookServer {
           body: commands,
         }
       );
-      console.log(`Succesfully overwrote application commands in guild`);
+      logger.info(`Succesfully overwrote application commands in guild`);
     } catch (e) {
-      console.log(`Error registering application commands in guild`);
-      console.log(e);
+      logger.error(`Error registering application commands in guild`);
+      logger.error(e);
     }
   }
 
@@ -116,7 +117,7 @@ export class WebhookServer {
     });
 
     this.app.listen(this.port, () => {
-      console.log(`Server listening on ${this.port}`);
+      logger.info(`Server listening on ${this.port}`);
     });
   }
 }
