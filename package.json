@@ -1,4 +1,7 @@
 {
+  "name": "webhook-bot-js",
+  "author": "Duckulus",
+  "module": "dist/webhook-bot-js.esm.js",
   "version": "0.1.4",
   "license": "MIT",
   "main": "dist/index.js",
@@ -31,24 +34,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "webhook-bot-js",
-  "author": "Duckulus",
-  "module": "dist/webhook-bot-js.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/webhook-bot-js.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/webhook-bot-js.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^7.0.8",
     "@types/express": "^4.17.13",
     "husky": "^8.0.1",
-    "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.6.3"
