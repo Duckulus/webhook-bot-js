@@ -15,8 +15,9 @@ import {
 } from '../core/commandTypes';
 import { REST } from '@discordjs/rest';
 import { logger } from '../utils/logger';
+import EventEmitter from 'node:events';
 
-export class WebhookServer {
+export class WebhookServer extends EventEmitter {
   private app: Express;
   private rest: REST;
   public readonly port: number;
@@ -29,6 +30,7 @@ export class WebhookServer {
    * @param options Options for the Server
    */
   constructor(options?: ServerOptions) {
+    super();
     this.app = express();
     this.port = options?.port || 3600;
     this.token = options?.token || '';
@@ -113,6 +115,7 @@ export class WebhookServer {
 
     this.app.post('/', async (req, res) => {
       const interaction = req.body as APIInteraction;
+      this.emit('interactionReceived', interaction);
       res.status(200).send(await handleInteraction(interaction));
     });
 
