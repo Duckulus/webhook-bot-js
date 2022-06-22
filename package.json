@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/node": "^18.0.0",
     "husky": "^8.0.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
