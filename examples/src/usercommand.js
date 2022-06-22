@@ -6,7 +6,7 @@ const server = new WebhookServer({
   public_key: '',
 });
 
-// usercommands can be accessed by rightclicking a user in a guild
+// usercommands can be accessed in the context menu when rightclicking a user in a guild
 server.registerUserCommand({
   name: 'ping',
   execute: interaction => {

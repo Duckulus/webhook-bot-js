@@ -6,6 +6,7 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "discord-api-types": "^0.34.0",
     "webhook-bot-js": "./.."
   }
 }

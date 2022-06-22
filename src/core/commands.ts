@@ -1,14 +1,16 @@
-import { SlashCommand, UserCommand } from './commandTypes';
+import { MessageCommand, SlashCommand, UserCommand } from './commandTypes';
 import {
   APIApplicationCommandInteraction,
   APIChatInputApplicationCommandInteraction,
   APIInteractionResponse,
+  APIMessageApplicationCommandInteraction,
   APIUserApplicationCommandInteraction,
   ApplicationCommandType,
 } from 'discord-api-types/v10';
 
 export const slashCommands: { [name: string]: SlashCommand } = {};
 export const userCommands: { [name: string]: UserCommand } = {};
+export const messageCommands: { [name: string]: MessageCommand } = {};
 
 export const handleCommand = async (
   commandInteraction: APIApplicationCommandInteraction
@@ -27,6 +29,12 @@ export const handleCommand = async (
       if (!userCommand) return;
       return userCommand.execute(
         commandInteraction as APIUserApplicationCommandInteraction
+      );
+    case ApplicationCommandType.Message:
+      const messageCommand = messageCommands[command.name];
+      if (!messageCommand) return;
+      return messageCommand.execute(
+        commandInteraction as APIMessageApplicationCommandInteraction
       );
   }
 
@@ -49,6 +57,13 @@ export const getCommands = () => {
     commands.push({
       name: cmd.name,
       type: ApplicationCommandType.User,
+    });
+  });
+
+  Object.values(messageCommands).forEach(cmd => {
+    commands.push({
+      name: cmd.name,
+      type: ApplicationCommandType.Message,
     });
   });
 

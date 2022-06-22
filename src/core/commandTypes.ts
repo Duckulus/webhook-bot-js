@@ -2,6 +2,7 @@ import {
   APIApplicationCommandOption,
   APIChatInputApplicationCommandInteraction,
   APIInteractionResponse,
+  APIMessageApplicationCommandInteraction,
   APIUserApplicationCommandInteraction,
 } from 'discord-api-types/v10';
 
@@ -18,5 +19,12 @@ export type UserCommand = {
   name: string;
   execute: (
     interaction: APIUserApplicationCommandInteraction
+  ) => APIInteractionResponse;
+};
+
+export type MessageCommand = {
+  name: string;
+  execute: (
+    interaction: APIMessageApplicationCommandInteraction
   ) => APIInteractionResponse;
 };

@@ -2,8 +2,17 @@ import express, { Express } from 'express';
 import { auth } from '../auth/authMiddleware';
 import { APIInteraction, Routes } from 'discord-api-types/v10';
 import { handleInteraction } from '../core/handler';
-import { getCommands, slashCommands, userCommands } from '../core/commands';
-import { SlashCommand, UserCommand } from '../core/commandTypes';
+import {
+  getCommands,
+  messageCommands,
+  slashCommands,
+  userCommands,
+} from '../core/commands';
+import {
+  MessageCommand,
+  SlashCommand,
+  UserCommand,
+} from '../core/commandTypes';
 import { REST } from '@discordjs/rest';
 
 export class WebhookServer {
@@ -31,6 +40,10 @@ export class WebhookServer {
 
   registerUserCommand(command: UserCommand) {
     userCommands[command.name] = command;
+  }
+
+  registerMessageCommand(command: MessageCommand) {
+    messageCommands[command.name] = command;
   }
 
   async pushGlobalApplicationCommands() {
