@@ -1,0 +1,11 @@
+{
+  "name": "@webhook-bot-js/examples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Duckulus",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "webhook-bot-js": "../"
+  }
+}
