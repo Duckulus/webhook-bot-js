@@ -48,3 +48,4 @@ server.pushGlobalApplicationCommands();
 //start server
 server.start();
 ````
+More examples can be found in the [examples](examples) directory
