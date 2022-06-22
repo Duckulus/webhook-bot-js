@@ -23,6 +23,10 @@ export class WebhookServer {
   private readonly application_id;
   private readonly public_key;
 
+  /**
+   * Creates a new WebhookServer
+   * @param options Options for the Server
+   */
   constructor(options?: ServerOptions) {
     this.app = express();
     this.port = options?.port || 3600;
@@ -34,18 +38,36 @@ export class WebhookServer {
     }).setToken(this.token);
   }
 
+  /**
+   * Adds a SlashCommand to be registered.
+   * This method does NOT interact with Discord in any way.
+   * @param command The SlashCommand
+   */
   registerSlashCommand(command: SlashCommand) {
     slashCommands[command.name] = command;
   }
 
+  /**
+   * Adds a UserCommand to be registered.
+   * This method does NOT interact with Discord in any way.
+   * @param command The UserCommand
+   */
   registerUserCommand(command: UserCommand) {
     userCommands[command.name] = command;
   }
 
+  /**
+   * Adds a MessageCommand to be registered.
+   * This method does NOT interact with Discord in any way.
+   * @param command The MessageCommand
+   */
   registerMessageCommand(command: MessageCommand) {
     messageCommands[command.name] = command;
   }
 
+  /**
+   * Overwrites all global Application Commands
+   */
   async pushGlobalApplicationCommands() {
     const commands = getCommands();
 
@@ -60,6 +82,9 @@ export class WebhookServer {
     }
   }
 
+  /**
+   * Overwrites all Application Commands in the specified guild
+   */
   async pushGuildApplicationCommands(guildId: string) {
     const commands = getCommands();
 
@@ -77,6 +102,10 @@ export class WebhookServer {
     }
   }
 
+  /**
+   * Runs the Server on "/" on the specified Port.
+   * Incoming request are automatically verified using the provided public key
+   */
   start() {
     this.app.use(express.json());
     this.app.use(auth(this.public_key));
