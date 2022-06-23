@@ -49,5 +49,18 @@
     "tslog": "^3.3.3",
     "tweetnacl": "^1.0.3"
   },
-  "repository": "https://github.com/Duckulus/webhook-bot-js.git"
+  "repository": "https://github.com/Duckulus/webhook-bot-js.git",
+  "keywords": [
+    "discord",
+    "discord api",
+    "discord.js",
+    "webhook",
+    "webhook-bot",
+    "http",
+    "http-bot",
+    "interactions",
+    "http-interactions",
+    "commands",
+    "slashcommands",
+  ]
 }
