@@ -16,11 +16,9 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "yarn build && tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
+    "prepare": "tsdx build"
   },
   "peerDependencies": {},
   "husky": {
@@ -50,6 +48,10 @@
     "tweetnacl": "^1.0.3"
   },
   "repository": "https://github.com/Duckulus/webhook-bot-js.git",
+  "jest": {
+    "rootDir": "test",
+    "testEnvironment": "node"
+  },
   "keywords": [
     "discord",
     "discord api",

@@ -1,9 +1,10 @@
-/**
- * @jest-environment node
- */
+import { WebhookServer } from '../dist';
 
 describe('server', () => {
   it('works', () => {
-    expect(3).toEqual(3);
+    const server = new WebhookServer({
+      port: 3000,
+    });
+    expect(server.port).toEqual(3000);
   });
 });

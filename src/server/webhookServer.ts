@@ -15,7 +15,7 @@ import {
 } from '../core/commandTypes';
 import { REST } from '@discordjs/rest';
 import { logger } from '../utils/logger';
-import EventEmitter from 'node:events';
+import EventEmitter from 'events';
 
 export class WebhookServer extends EventEmitter {
   private app: Express;
