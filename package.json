@@ -61,6 +61,6 @@
     "interactions",
     "http-interactions",
     "commands",
-    "slashcommands",
+    "slashcommands"
   ]
 }
